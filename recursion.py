@@ -48,16 +48,12 @@ def fibonacci(n):
     else:
         return fibonacci(n-1) + fibonacci(n-2)
 
-print fibonacci(4)
-
 # Finds the item i in the list l.... RECURSIVELY
 def find(l, i):
     if l[0] == i:
         return True
     else:
         return find(l[1:], i)
-
-print find(l, 2)
 
 # Determines if a string is a palindrome
 def palindrome(some_string):
@@ -70,13 +66,25 @@ def palindrome(some_string):
         new_string = some_string[1:-1]
         return palindrome(new_string)    
 
-    
 
-# Given the width and height of a sheet of paper, and the number of times to fold it, return the final dimensions of the sheet as a tuple. Assume that you always fold in half along the longest edge of the sheet.
+# Given the width and height of a sheet of paper, and the number of times to fold it, 
+# return the final dimensions of the sheet as a tuple. 
+# Assume that you always fold in half along the longest edge of the sheet.
 def fold_paper(width, height, folds):
-    return (0, 0)
+    if width >= height and folds > 0:
+        return fold_paper(width, height / 2, folds - 1)
+    elif height > width and folds > 0:
+        return fold_paper(width / 2, height, folds - 1)
+    elif folds == 0:
+        return (width, height)
 
 # Count up
 # Print all the numbers from 0 to target
 def count_up(target, n):
-    return
+    if n < target:
+        print n
+        return count_up(target, n + 1)
+    elif n == target:
+        return n
+
+print count_up(10, 0)
