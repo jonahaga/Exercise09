@@ -57,7 +57,6 @@ def find(l, i):
 
 # Determines if a string is a palindrome
 def palindrome(some_string):
-    #compare first item with last if true run function again if false return false
     if len(some_string) <= 1:
         return True
     elif some_string[0] != some_string[-1]:
@@ -66,17 +65,17 @@ def palindrome(some_string):
         new_string = some_string[1:-1]
         return palindrome(new_string)    
 
-
 # Given the width and height of a sheet of paper, and the number of times to fold it, 
 # return the final dimensions of the sheet as a tuple. 
 # Assume that you always fold in half along the longest edge of the sheet.
 def fold_paper(width, height, folds):
-    if width >= height and folds > 0:
-        return fold_paper(width, height / 2, folds - 1)
-    elif height > width and folds > 0:
-        return fold_paper(width / 2, height, folds - 1)
-    elif folds == 0:
+    
+    if folds == 0:
         return (width, height)
+    elif height < width:    
+        return fold_paper(height / 2, width, folds - 1)
+    else:
+        return fold_paper(width / 2, height, folds - 1)
 
 # Count up
 # Print all the numbers from 0 to target
@@ -88,3 +87,4 @@ def count_up(target, n):
         return n
 
 print count_up(10, 0)
+
